@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Battle Ship</title>
+</head>
+<style>
+  .gameContent {
+    display: inline-flex;
+    margin-bottom: 20px;
+  }
+
+  .board {
+    margin: 20px;
+  }
+
+  .board.p1 {
+    display: block
+  }
+
+  .board.p2 {
+    display: block
+  }
+
+  .board.cheatp1 {
+    display: block
+  }
+
+  .board.cheatp2 {
+    display: block
+  }
+
+  .changePlayer {
+    display: none
+  }
+
+  .box {
+    height: 50px;
+    width: 50px;
+    border: 1px solid #ddd;
+    display: inline-flex;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+  }
+
+  .coordinate {
+    border: 1px solid #fff;
+  }
+
+  .box span.number {
+    /* font-size: 15px;
+    position: relative;
+    top: 3px;
+    left: 3px; */
+    text-align: left;
+  }
+
+  .setting-kapalp1 {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    display: none
+  }
+
+  .setting-kapalp2 {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    display: none
+  }
+
+  .row {
+    display: flex;
+  }
+</style>
+<body>
+  <h2>Current Player : <span id='current-player'></span></h2>
+  <div class='gameContent'>
+    <div id='p1content' class="p1content">
+      <div id="board1" class="board p1">
+        <span>Player 1 Board</span>
+      </div>
+      <div id='setKapalp1'>
+        <button onclick="openSettingShip('p1')">Set Kapal</button>
+      </div>
+      <div class="setting-kapalp1">
+        <label>Masukan Koordinat awal kapal (baris, kolom)</label>
+        <br>
+        <input type="text" id='coordinatep1' />
+        <br>
+        <br>
+        <label>Jenis Kapal</label>
+        <br>
+        <div id='availshipp1'>
+          
+        </div>
+        <br>
+        <label>Masukan Orientasi Kapal</label>
+        <br>
+        <input type="radio" name='orientationp1' value="mendatar" /> Mendatar
+        <input type="radio" name='orientationp1' value='menurun'/> Menurun
+        <br>
+        <button onclick="setShip('p1')">Submit</button>
+      </div>
+    </div>
+    <div id='p2content' class="p2content">
+      <div id="board2" class="board p2">
+        <span>Player 2 Board</span>
+      </div>
+      <div id='setKapalp2'>
+        <button onclick="openSettingShip('p2')">Set Kapal</button>
+      </div>
+      <div class="setting-kapalp2">
+        <label>Masukan Koordinat awal kapal (baris, kolom)</label>
+        <br>
+        <input type="text" id='coordinatep2' />
+        <br>
+        <br>
+        <label>Jenis Kapal</label>
+        <br>
+        <div id='availshipp2'>
+          
+        </div>
+        <br>
+        <label>Masukan Orientasi Kapal</label>
+        <br>
+        <input type="radio" name='orientationp2' value="mendatar" /> Mendatar
+        <input type="radio" name='orientationp2' value='menurun'/> Menurun
+        <br>
+        <button onclick="setShip('p2')">Submit</button>
+      </div>
+    </div>
+    <div id='cheatp1Content'>
+      <div id="boardcheatp1" class="board cheatp1">
+        <span>Cheat P1 Board</span>
+      </div>
+    </div>
+    <div id='cheatp2Content'>
+      <div id="boardcheatp2" class="board cheatp2">
+        <span>Cheat P2 Board</span>
+      </div>
+    </div>
+  </div>
+  <div>
+    <button onclick="startGame()" id='start-button'>Start Game!</button>
+    <br>
+    <button onclick="changePlayer()" class='changePlayer' id='endTurn'>End Turn</button>
+    <br>
+    <button onclick="salvo()">Salvo!!(cheat)</button>
+  </div>
+</body>
+<script src="script.js"></script>
+</html>
